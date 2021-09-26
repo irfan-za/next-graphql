@@ -8,6 +8,6 @@ app.use('/graphql', graphqlHTTP({
   schema,
   graphiql : true
 }));
-app.listen(4000, ()=>{
-  console.log("kokok 4000")
+app.listen(3000, ()=>{
+  console.log("kokok 3000")
 });
