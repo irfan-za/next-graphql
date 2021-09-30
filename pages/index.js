@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Addbook from '../component/add-book'
 import BookList from '../component/book-list'
 
 
@@ -14,6 +15,7 @@ export default function Home() {
       <main className="container">
       <h1>Book List</h1>
         <BookList/>
+        <Addbook/>
       </main>
         
     </div>

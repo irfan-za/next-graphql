@@ -1,4 +1,31 @@
+$pad:30px;
+
 .container{
     background-color: azure;
+    padding: $pad;
+}
+.loading{
+    color: blueviolet;
+    animation: pulse 3s infinite;
+}
+.opt{
     padding: 30px;
+}
+
+@keyframes pulse{
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

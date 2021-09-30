@@ -1,25 +1,44 @@
-import {gql, useQuery} from "@apollo/client"
-import { graphql } from "graphql";
+import { useState, useEffect } from "react";
+import {useQuery} from "@apollo/client";
+import { getBooksQuery } from "../queries/queries";
 
 
-const getBooksQuery = gql`
-{
-  books{
-    name
-    genre
-    author{
-      name
-    }
-  }
-}
-`
-const BookList=(books)=>{
+const BookList=()=>{
   const { loading, error, data } = useQuery(getBooksQuery);
-  console.log(data)
+  const [books, setBooks] = useState(null)
+  useEffect(async() => {
+    if(data){
+      setBooks(data.books)
+    }
+  }, [data])
+
+  if(loading){
+    return (
+      <div className="loading">
+        <h3>Loading Book...</h3>
+      </div>
+    )
+  }
+  else if(error){
+    return (
+      <div>
+        <h3 style={{color:"red"}}>Something error!</h3>
+      </div>
+    )
+  }
   return(
-    <div>
+    <div style={{marginBottom:"20px"}}>
       <ul id="book-list">
-        <li>Book NAme</li>
+        {
+          books && books.map((book) => {
+            return(
+            <li key={book.id}>
+              <h3>{book.name}</h3>
+              <p>genre : {book.genre}</p>
+            </li>
+            )
+          })
+        }
       </ul>
     </div>
   )
