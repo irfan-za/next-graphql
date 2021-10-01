@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
-import {useQuery} from "@apollo/client"
-import { getAuthorsQuery } from "../queries/queries";
+import {useQuery, useMutation} from "@apollo/client"
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from "../queries/queries";
 
 
 
 export default function Addbook(){
   const { loading, error, data } = useQuery(getAuthorsQuery);
+  const [addBookMut, { loadingMutation, errorMutation, dataMutation }] = useMutation(addBookMutation)
   const [authors, setAuthors] = useState(null)
   useEffect(async() => {
     if(data && data !== undefined){
       setAuthors(data.authors)
     }
-    console.log(data)
   }, [data])
-  console.log(authors)
+  // console.log(addBookMut, loadingMutation, dataMutation)
 
   const displayAuthor=()=>{
     if(loading){
@@ -23,21 +23,29 @@ export default function Addbook(){
     }
     else{
        return authors && authors.map((author)=>{
-         return <option className="opt" key={author.id}>{author.name}</option>
+         return <option className="opt" key={author.id} value={author.id}>{author.name}</option>
       })
     }
   }
   const AddBookHandler=(e)=>{
     e.preventDefault();
-    // const formData= new FormData(e.target);
-    // const data = Object.fromEntries(formData)
-    // console.log(data)
-    console.log(e.target.bookName)
+    const data = {
+      name : e.target.bookName.value,
+      genre : e.target.genre.value,
+      authorId : e.target.author.value,
+    }
+    addBookMut({
+      variables: {
+        name: data.name,
+        genre: data.genre,
+        authorId: data.authorId,
+      },
+      refetchQueries:[{query :getBooksQuery}]
+    })
   }
 
   return(
     <form onSubmit={AddBookHandler}>
-      <input type="text" />
       <table>
         <tbody>
           <tr>
