@@ -28,18 +28,21 @@ const BookList=()=>{
     )
   }
   return(
-    <div style={{marginBottom:"20px"}}>
-      <ul id="book-list">
-        {
-          books && books.map((book) => {
-            return(
-            <li key={book.id} onClick={()=>setBookId(book.id)}>
-              <h3>{book.name}</h3>
-            </li>
-            )
-          })
-        }
-      </ul>
+    <div className="book-list" >
+      <div>
+        <h3>Book List :</h3>
+        <ul className="list">
+          {
+            books && books.map((book) => {
+              return(
+              <li key={book.id} onClick={()=>setBookId(book.id)}>
+                <p>{book.name}</p>
+              </li>
+              )
+            })
+          }
+        </ul>
+      </div>
         <BookDetail id={bookId} />
     </div>
   )

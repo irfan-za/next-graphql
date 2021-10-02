@@ -11,7 +11,29 @@ $pad:30px;
 .opt{
     padding: 30px;
 }
-
+.book-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.list{
+    li{
+        p{
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+            line-height: 0;
+        }
+    }
+}
+.button{
+    border: 1px solid chartreuse;
+    padding: 0 11px;
+    background: rgb(187, 255, 120);
+    font-size: 1.5rem;
+}
+td{
+    line-height: 0;
+}
 @keyframes pulse{
     0%{
         opacity: 1;

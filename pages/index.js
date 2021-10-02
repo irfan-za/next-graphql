@@ -13,9 +13,9 @@ export default function Home() {
       </Head>
 
       <main className="container">
-      <h1>Book List</h1>
-        <BookList/>
+      <div style={{textAlign:"center"}}><h1>Book App</h1></div>
         <Addbook/>
+        <BookList/>
       </main>
         
     </div>

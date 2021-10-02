@@ -15,9 +15,20 @@ const BookDetail=({id})=>{
         const {book} =data;
         return(
           <div>
-            <h2>{book.name}</h2>
-            <p>genre : {book.genre}</p>
-            <p>author : {book.author.name}</p>
+            <table>
+              <tr>
+                <td><h4>title : </h4></td>
+                <td><h4>{book.name}</h4></td>
+              </tr>
+              <tr>
+                <td><p>genre : </p></td>
+                <td><p>{book.genre}</p></td>
+              </tr>
+              <tr>
+                <td><p>author : </p></td>
+                <td><p>{book.author.name}</p></td>
+              </tr>
+            </table>
             <p>books of this author :</p>
             <ul>
               {
@@ -49,7 +60,7 @@ const BookDetail=({id})=>{
     
     return(
       <div id="book-detail">
-        Book Detail :
+        <h3>Book Detail :</h3>
         { result()}
       </div>
     )

@@ -46,6 +46,7 @@ export default function Addbook(){
 
   return(
     <form onSubmit={AddBookHandler}>
+      <h3>Add Book</h3>
       <table>
         <tbody>
           <tr>
@@ -78,7 +79,7 @@ export default function Addbook(){
           <tr></tr>
           <tr>
             <td>
-              <input type="submit" value="+" style={{ padding:"5px 10px", border:"1px solid purple", backgroundColor:"plum", font:"bold", fontSize:"24px"}}/>
+              <input type="submit" value="+" className="button"/>
             </td>
           </tr>
         </tbody>
